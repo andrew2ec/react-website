@@ -1,13 +1,22 @@
 'use strict';
 
 var React = require('react');
-var heading = React.createClass({
-   displayName: 'heading',
+var LeadItem = React.createClass({
+   displayName: 'LeadItem',
 
    render: function render() {
+
+      var divStyle = {
+         marginTop: '10',
+         background: 'orange'
+      };
+      if (this.props.background) {
+         divStyle.background = this.props.background;
+      }
+      var titleStyle = {};
       return React.createElement(
          'div',
-         null,
+         { style: divStyle },
          React.createElement(
             'div',
             null,
@@ -29,4 +38,4 @@ var heading = React.createClass({
       );
    }
 });
-module.exports = heading;
+module.exports = LeadItem;

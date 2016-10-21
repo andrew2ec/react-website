@@ -1,8 +1,19 @@
 var React = require('react');
-var heading = React.createClass({
+var LeadItem = React.createClass({
 	render:function(){
+
+	    var divStyle = {
+			marginTop:'10',
+			background:'orange'
+		}
+		if(this.props.background){
+			divStyle.background = this.props.background;
+		}
+		var titleStyle = {
+
+		}
 		return(
-			<div>
+			<div style={divStyle}>
 				<div>
 					<h1>{this.props.title}</h1>
 				</div>
@@ -13,4 +24,4 @@ var heading = React.createClass({
 		);
 	}
 });
-module.exports = heading;
+module.exports = LeadItem;

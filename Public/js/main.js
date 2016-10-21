@@ -20757,13 +20757,22 @@ process.umask = function() { return 0; };
 
 },{}],172:[function(require,module,exports){
 var React = require('react');
-var heading = React.createClass({
-	displayName: 'heading',
+var LeadItem = React.createClass({
+	displayName: 'LeadItem',
 
 	render: function () {
+
+		var divStyle = {
+			marginTop: '10',
+			background: 'orange'
+		};
+		if (this.props.background) {
+			divStyle.background = this.props.background;
+		}
+		var titleStyle = {};
 		return React.createElement(
 			'div',
-			null,
+			{ style: divStyle },
 			React.createElement(
 				'div',
 				null,
@@ -20785,12 +20794,14 @@ var heading = React.createClass({
 		);
 	}
 });
-module.exports = heading;
+module.exports = LeadItem;
 
 },{"react":170}],173:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
-var heading = require('./components/heading.jsx');
-ReactDOM.render(React.createElement('heading', { title: 'Andrew\'s Website', content: 'Welcome to my website' }), document.getElementById('top'));
+var LeadItem = require('./components/heading.jsx');
+ReactDOM.render(React.createElement(LeadItem, { title: 'Andrew\'s Website',
+  content: 'Welcome to my website',
+  background: 'yellow' }), document.getElementById('top'));
 
 },{"./components/heading.jsx":172,"react":170,"react-dom":1}]},{},[173]);
