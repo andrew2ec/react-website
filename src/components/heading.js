@@ -7,7 +7,6 @@ var LeadItem = React.createClass({
    render: function render() {
 
       var divStyle = {
-         marginTop: '10',
          position: 'relative'
       };
       if (this.props.background) {

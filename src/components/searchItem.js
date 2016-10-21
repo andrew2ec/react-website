@@ -1,8 +1,8 @@
 'use strict';
 
 var React = require('react');
-var searchItem = React.createClass({
-   displayName: 'searchItem',
+var SearchItem = React.createClass({
+   displayName: 'SearchItem',
 
    render: function render() {
       return React.createElement(
@@ -16,4 +16,4 @@ var searchItem = React.createClass({
       );
    }
 });
-module.exports = searchItem;
+module.exports = SearchItem;

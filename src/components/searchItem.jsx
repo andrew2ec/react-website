@@ -1,5 +1,5 @@
 var React = require('react');
-var searchItem = React.createClass({
+var SearchItem = React.createClass({
 	render:function(){
 		return(
 			<li>
@@ -8,4 +8,4 @@ var searchItem = React.createClass({
 		);
 	}
 });
-module.exports = searchItem;
+module.exports = SearchItem;

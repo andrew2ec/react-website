@@ -3,7 +3,7 @@
 var React = require('react');
 var searchItem = require('./searchItem.jsx');
 
-var searchList = React.createClass({
+var SearchList = React.createClass({
    displayName: 'searchList',
 
    render: function render() {
@@ -21,4 +21,4 @@ var searchList = React.createClass({
       );
    }
 });
-module.exports = searchList;
+module.exports = SearchList;

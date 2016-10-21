@@ -3,8 +3,8 @@
 var React = require('react');
 var searchList = require('./searchList.jsx');
 
-var searchBox = React.createClass({
-   displayName: 'searchBox',
+var SearchBox = React.createClass({
+   displayName: 'SearchBox',
 
    getInitialState: function getInitialState() {
       return { items: [], newItemText: '' };
@@ -20,7 +20,8 @@ var searchBox = React.createClass({
    },
    render: function render() {
       var divStyle = {
-         marginTop: '10'
+         marginTop: '10',
+         float: 'right'
       };
       return React.createElement(
          'div',
@@ -44,4 +45,4 @@ var searchBox = React.createClass({
       );
    }
 });
-module.exports = searchBox;
+module.exports = SearchBox;

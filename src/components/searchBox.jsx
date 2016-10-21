@@ -1,7 +1,7 @@
 var React = require('react');
 var searchList = require('./searchList.jsx');
 
-var searchBox = React.createClass({
+var SearchBox = React.createClass({
 	getInitialState:function(){
 		return({items:[], newItemText:''});
 	},
@@ -16,8 +16,9 @@ var searchBox = React.createClass({
 	},
 	render:function(){
 		var divStyle = {
-	marginTop:'10'
-}
+			marginTop:'10',
+			float:'right'
+		}
 		return(
 			<div style={divStyle}>
 				<h2>{this.props.title}</h2>
@@ -30,4 +31,4 @@ var searchBox = React.createClass({
 		);
 	}
 });
-module.exports = searchBox;
+module.exports = SearchBox;

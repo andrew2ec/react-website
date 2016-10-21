@@ -20763,7 +20763,6 @@ var LeadItem = React.createClass({
 	render: function () {
 
 		var divStyle = {
-			marginTop: '10',
 			position: 'relative'
 		};
 		if (this.props.background) {
@@ -20806,8 +20805,8 @@ module.exports = LeadItem;
 var React = require('react');
 var searchList = require('./searchList.jsx');
 
-var searchBox = React.createClass({
-	displayName: 'searchBox',
+var SearchBox = React.createClass({
+	displayName: 'SearchBox',
 
 	getInitialState: function () {
 		return { items: [], newItemText: '' };
@@ -20823,7 +20822,8 @@ var searchBox = React.createClass({
 	},
 	render: function () {
 		var divStyle = {
-			marginTop: '10'
+			marginTop: '10',
+			float: 'right'
 		};
 		return React.createElement(
 			'div',
@@ -20847,12 +20847,12 @@ var searchBox = React.createClass({
 		);
 	}
 });
-module.exports = searchBox;
+module.exports = SearchBox;
 
 },{"./searchList.jsx":175,"react":170}],174:[function(require,module,exports){
 var React = require('react');
-var searchItem = React.createClass({
-	displayName: 'searchItem',
+var SearchItem = React.createClass({
+	displayName: 'SearchItem',
 
 	render: function () {
 		return React.createElement(
@@ -20866,7 +20866,7 @@ var searchItem = React.createClass({
 		);
 	}
 });
-module.exports = searchItem;
+module.exports = SearchItem;
 
 },{"react":170}],175:[function(require,module,exports){
 var React = require('react');
@@ -20896,10 +20896,12 @@ module.exports = searchList;
 var React = require('react');
 var ReactDOM = require('react-dom');
 var LeadItem = require('./components/heading.jsx');
-var searchBox = require('./components/searchBox.jsx');
+var SearchBox = require('./components/searchBox.jsx');
+
 ReactDOM.render(React.createElement(LeadItem, { title: 'Andrew\'s Website',
   content: 'Welcome to my website',
   background: 'yellow' }), document.getElementById('top'));
-ReactDOM.render(React.createElement('searchBox', { title: 'Search' }), document.getElementById('searchdiv'));
+
+ReactDOM.render(React.createElement(SearchBox, { title: 'Search' }), document.getElementById('searchdiv'));
 
 },{"./components/heading.jsx":172,"./components/searchBox.jsx":173,"react":170,"react-dom":1}]},{},[176]);
