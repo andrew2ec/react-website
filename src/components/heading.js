@@ -1,7 +1,6 @@
 'use strict';
 
 var React = require('react');
-
 var heading = React.createClass({
    displayName: 'heading',
 

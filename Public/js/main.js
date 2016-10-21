@@ -20757,7 +20757,6 @@ process.umask = function() { return 0; };
 
 },{}],172:[function(require,module,exports){
 var React = require('react');
-
 var heading = React.createClass({
 	displayName: 'heading',
 
@@ -20792,7 +20791,6 @@ module.exports = heading;
 var React = require('react');
 var ReactDOM = require('react-dom');
 var heading = require('./components/heading.jsx');
-
 ReactDOM.render(React.createElement('heading', { title: 'Andrew\'s Website', content: 'Welcome to my website' }), document.getElementById('top'));
 
 },{"./components/heading.jsx":172,"react":170,"react-dom":1}]},{},[173]);
