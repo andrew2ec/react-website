@@ -17,14 +17,15 @@ var SearchBox = React.createClass({
 	render:function(){
 		var divStyle = {
 			marginTop:'10',
-			float:'right'
+			float:'right',
+			paddingRight:'10'
 		}
 		return(
 			<div style={divStyle}>
 				<h2>{this.props.title}</h2>
 				<form onSubmit={this.handleSubmit}>
-					<input onChange={this.onChange} value={this.state.newItemText} />
-					<button>Search</button>
+					<input className="form-control" onChange={this.onChange} value={this.state.newItemText} />
+					<button className="btn btn-primary">Search</button>
 				</form>
 				<searchList items={this.props.items} />
 			</div>

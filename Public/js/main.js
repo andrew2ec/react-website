@@ -20773,7 +20773,7 @@ var LeadItem = React.createClass({
 		};
 		var contentStyle = {
 			textAlign: 'right',
-			marginRight: '10'
+			paddingRight: '20'
 		};
 		return React.createElement(
 			'div',
@@ -20823,7 +20823,8 @@ var SearchBox = React.createClass({
 	render: function () {
 		var divStyle = {
 			marginTop: '10',
-			float: 'right'
+			float: 'right',
+			paddingRight: '10'
 		};
 		return React.createElement(
 			'div',
@@ -20836,10 +20837,10 @@ var SearchBox = React.createClass({
 			React.createElement(
 				'form',
 				{ onSubmit: this.handleSubmit },
-				React.createElement('input', { onChange: this.onChange, value: this.state.newItemText }),
+				React.createElement('input', { className: 'form-control', onChange: this.onChange, value: this.state.newItemText }),
 				React.createElement(
 					'button',
-					null,
+					{ className: 'btn btn-primary' },
 					'Search'
 				)
 			),

@@ -13,7 +13,7 @@ var LeadItem = React.createClass({
 		}
 		var contentStyle = {
 			textAlign:'right',
-			marginRight:'10'
+			paddingRight:'20'
 		}
 		return(
 			<div style={divStyle}>
