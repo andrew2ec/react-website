@@ -4,21 +4,25 @@ var LeadItem = React.createClass({
 
 	    var divStyle = {
 			marginTop:'10',
-			background:'orange'
+			position:'relative'
 		}
 		if(this.props.background){
 			divStyle.background = this.props.background;
 		}
 		var titleStyle = {
-
+			textAlign:'center'
+		}
+		var contentStyle = {
+			textAlign:'right',
+			marginRight:'10'
 		}
 		return(
 			<div style={divStyle}>
 				<div>
-					<h1>{this.props.title}</h1>
+					<h1 style={titleStyle}>{this.props.title}</h1>
 				</div>
 				<div>
-					<p>{this.props.content}</p>
+					<p style={contentStyle}>{this.props.content}</p>
 				</div>
 			</div>
 		);

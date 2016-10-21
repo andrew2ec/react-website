@@ -20764,12 +20764,18 @@ var LeadItem = React.createClass({
 
 		var divStyle = {
 			marginTop: '10',
-			background: 'orange'
+			position: 'relative'
 		};
 		if (this.props.background) {
 			divStyle.background = this.props.background;
 		}
-		var titleStyle = {};
+		var titleStyle = {
+			textAlign: 'center'
+		};
+		var contentStyle = {
+			textAlign: 'right',
+			marginRight: '10'
+		};
 		return React.createElement(
 			'div',
 			{ style: divStyle },
@@ -20778,7 +20784,7 @@ var LeadItem = React.createClass({
 				null,
 				React.createElement(
 					'h1',
-					null,
+					{ style: titleStyle },
 					this.props.title
 				)
 			),
@@ -20787,7 +20793,7 @@ var LeadItem = React.createClass({
 				null,
 				React.createElement(
 					'p',
-					null,
+					{ style: contentStyle },
 					this.props.content
 				)
 			)
@@ -20798,10 +20804,102 @@ module.exports = LeadItem;
 
 },{"react":170}],173:[function(require,module,exports){
 var React = require('react');
+var searchList = require('./searchList.jsx');
+
+var searchBox = React.createClass({
+	displayName: 'searchBox',
+
+	getInitialState: function () {
+		return { items: [], newItemText: '' };
+	},
+	onChange: function (e) {
+		this.setState({ newItemText: e.target.value });
+	},
+	handleSubmit: function (e) {
+		e.preventDefault();
+		var createItem = this.state.items;
+		createItem.push(this.state.newItemText);
+		this.setState({ items: createItem, newItemText: '' });
+	},
+	render: function () {
+		var divStyle = {
+			marginTop: '10'
+		};
+		return React.createElement(
+			'div',
+			{ style: divStyle },
+			React.createElement(
+				'h2',
+				null,
+				this.props.title
+			),
+			React.createElement(
+				'form',
+				{ onSubmit: this.handleSubmit },
+				React.createElement('input', { onChange: this.onChange, value: this.state.newItemText }),
+				React.createElement(
+					'button',
+					null,
+					'Search'
+				)
+			),
+			React.createElement('searchList', { items: this.props.items })
+		);
+	}
+});
+module.exports = searchBox;
+
+},{"./searchList.jsx":175,"react":170}],174:[function(require,module,exports){
+var React = require('react');
+var searchItem = React.createClass({
+	displayName: 'searchItem',
+
+	render: function () {
+		return React.createElement(
+			'li',
+			null,
+			React.createElement(
+				'h3',
+				null,
+				this.props.search
+			)
+		);
+	}
+});
+module.exports = searchItem;
+
+},{"react":170}],175:[function(require,module,exports){
+var React = require('react');
+var searchItem = require('./searchItem.jsx');
+
+var searchList = React.createClass({
+	displayName: 'searchList',
+
+	render: function () {
+		var createList = function (search, index) {
+			return React.createElement('searchItem', { key: index + search, text: search });
+		};
+		return React.createElement(
+			'ul',
+			null,
+			React.createElement(
+				'h2',
+				null,
+				this.props.items.map(createList)
+			)
+		);
+	}
+});
+module.exports = searchList;
+
+},{"./searchItem.jsx":174,"react":170}],176:[function(require,module,exports){
+var React = require('react');
 var ReactDOM = require('react-dom');
 var LeadItem = require('./components/heading.jsx');
+var searchBox = require('./components/searchBox.jsx');
 ReactDOM.render(React.createElement(LeadItem, { title: 'Andrew\'s Website',
   content: 'Welcome to my website',
   background: 'yellow' }), document.getElementById('top'));
+ReactDOM.render(React.createElement('searchBox', { title: 'Search' }), document.getElementById('searchdiv'));
 
-},{"./components/heading.jsx":172,"react":170,"react-dom":1}]},{},[173]);
+},{"./components/heading.jsx":172,"./components/searchBox.jsx":173,"react":170,"react-dom":1}]},{},[176]);

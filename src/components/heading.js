@@ -8,12 +8,18 @@ var LeadItem = React.createClass({
 
       var divStyle = {
          marginTop: '10',
-         background: 'orange'
+         position: 'relative'
       };
       if (this.props.background) {
          divStyle.background = this.props.background;
       }
-      var titleStyle = {};
+      var titleStyle = {
+         textAlign: 'center'
+      };
+      var contentStyle = {
+         textAlign: 'right',
+         marginRight: '10'
+      };
       return React.createElement(
          'div',
          { style: divStyle },
@@ -22,7 +28,7 @@ var LeadItem = React.createClass({
             null,
             React.createElement(
                'h1',
-               null,
+               { style: titleStyle },
                this.props.title
             )
          ),
@@ -31,7 +37,7 @@ var LeadItem = React.createClass({
             null,
             React.createElement(
                'p',
-               null,
+               { style: contentStyle },
                this.props.content
             )
          )
