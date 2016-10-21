@@ -1,0 +1,28 @@
+{
+  "name": "react-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+	  "start": "watchify src/main.jsx -v -t [ babelify --presets [ react ] ] -o public/js/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrew2ec/react-website.git"
+  },
+  "author": "Andrew Caldwell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrew2ec/react-website/issues"
+  },
+  "homepage": "https://github.com/andrew2ec/react-website#readme",
+  "dependencies": {
+    "babel-preset-react": "^6.16.0",
+    "babelify": "^7.3.0",
+    "browserfy": "^1.0.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "watchify": "^3.7.0"
+  }
+}
