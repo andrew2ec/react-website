@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react');
+
 var SearchItem = React.createClass({
    displayName: 'SearchItem',
 
@@ -11,7 +12,7 @@ var SearchItem = React.createClass({
          React.createElement(
             'h3',
             null,
-            this.props.search
+            this.props.text
          )
       );
    }

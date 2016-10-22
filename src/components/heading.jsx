@@ -9,19 +9,13 @@ var LeadItem = React.createClass({
 			divStyle.background = this.props.background;
 		}
 		var titleStyle = {
-			textAlign:'center'
-		}
-		var contentStyle = {
-			textAlign:'right',
-			paddingRight:'20'
+			textAlign:'center',
+			color:'white'
 		}
 		return(
 			<div style={divStyle}>
 				<div>
 					<h1 style={titleStyle}>{this.props.title}</h1>
-				</div>
-				<div>
-					<p style={contentStyle}>{this.props.content}</p>
 				</div>
 			</div>
 		);

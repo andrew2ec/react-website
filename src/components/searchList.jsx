@@ -1,16 +1,14 @@
 var React = require('react');
-var searchItem = require('./searchItem.jsx');
+var SearchItem = require('./searchItem.jsx');
 
-var searchList = React.createClass({
-	render:function(){
-		var createList = function(search, index){
-			return <searchItem key={index + search} text={search} />
-		}
+var SearchList = React.createClass({
+	render: function(){
+		var createItem = function(text, index){
+			return <SearchItem key={index + text} text={text} />;
+		};
 		return(
-			<ul>
-				<h2>{this.props.items.map(createList)}</h2>
-			</ul>
+			<ul>{this.props.items.map(createItem)}</ul>
 		);
 	}
 });
-module.exports = searchList;
+module.exports = SearchList;

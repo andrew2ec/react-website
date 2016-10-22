@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react');
-var searchList = require('./searchList.jsx');
+var SearchList = require('./searchList.jsx');
 
 var SearchBox = React.createClass({
    displayName: 'SearchBox',
@@ -10,17 +10,17 @@ var SearchBox = React.createClass({
       return { items: [], newItemText: '' };
    },
    onChange: function onChange(e) {
-      this.setState({ newItemText: e.target.value });
+      setState({ newItemText: e.target.value });
    },
    handleSubmit: function handleSubmit(e) {
       e.preventDefault();
-      var createItem = this.state.items;
-      createItem.push(this.state.newItemText);
-      this.setState({ items: createItem, newItemText: '' });
+      var createList = this.state.items;
+      createList.push(this.state.newItemText);
+      this.setState({ items: createList, newItemText: '' });
    },
    render: function render() {
+
       var divStyle = {
-         marginTop: '10',
          float: 'right',
          paddingRight: '10'
       };
@@ -28,9 +28,9 @@ var SearchBox = React.createClass({
          'div',
          { style: divStyle },
          React.createElement(
-            'h2',
+            'h1',
             null,
-            this.props.title
+            this.props.searchTitle
          ),
          React.createElement(
             'form',
@@ -42,7 +42,8 @@ var SearchBox = React.createClass({
                'Search'
             )
          ),
-         React.createElement('searchList', { items: this.props.items })
+         React.createElement(SearchList, { items: this.state.items }),
+         ';'
       );
    }
 });

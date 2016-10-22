@@ -20757,6 +20757,46 @@ process.umask = function() { return 0; };
 
 },{}],172:[function(require,module,exports){
 var React = require('react');
+
+var JumboItem = React.createClass({
+	displayName: 'JumboItem',
+
+	render: function () {
+
+		var containerStyle = {
+			maxHeight: '400',
+			minHeight: '400',
+			backgroundSize: 'cover'
+		};
+		if (this.props.imgSrc) {
+			containerStyle.backgroundImage = 'url(' + this.props.imgSrc + ')';
+		}
+		var headerStyle = {
+			color: 'white'
+		};
+		var contentStyle = {
+			color: 'white'
+		};
+		return React.createElement(
+			'div',
+			{ style: containerStyle, className: 'jumbotron' },
+			React.createElement(
+				'h1',
+				{ style: headerStyle },
+				this.props.title
+			),
+			React.createElement(
+				'p',
+				{ style: contentStyle },
+				this.props.content
+			)
+		);
+	}
+});
+module.exports = JumboItem;
+
+},{"react":170}],173:[function(require,module,exports){
+var React = require('react');
 var LeadItem = React.createClass({
 	displayName: 'LeadItem',
 
@@ -20769,11 +20809,8 @@ var LeadItem = React.createClass({
 			divStyle.background = this.props.background;
 		}
 		var titleStyle = {
-			textAlign: 'center'
-		};
-		var contentStyle = {
-			textAlign: 'right',
-			paddingRight: '20'
+			textAlign: 'center',
+			color: 'white'
 		};
 		return React.createElement(
 			'div',
@@ -20786,24 +20823,15 @@ var LeadItem = React.createClass({
 					{ style: titleStyle },
 					this.props.title
 				)
-			),
-			React.createElement(
-				'div',
-				null,
-				React.createElement(
-					'p',
-					{ style: contentStyle },
-					this.props.content
-				)
 			)
 		);
 	}
 });
 module.exports = LeadItem;
 
-},{"react":170}],173:[function(require,module,exports){
+},{"react":170}],174:[function(require,module,exports){
 var React = require('react');
-var searchList = require('./searchList.jsx');
+var SearchList = require('./searchList.jsx');
 
 var SearchBox = React.createClass({
 	displayName: 'SearchBox',
@@ -20812,17 +20840,17 @@ var SearchBox = React.createClass({
 		return { items: [], newItemText: '' };
 	},
 	onChange: function (e) {
-		this.setState({ newItemText: e.target.value });
+		setState({ newItemText: e.target.value });
 	},
 	handleSubmit: function (e) {
 		e.preventDefault();
-		var createItem = this.state.items;
-		createItem.push(this.state.newItemText);
-		this.setState({ items: createItem, newItemText: '' });
+		var createList = this.state.items;
+		createList.push(this.state.newItemText);
+		this.setState({ items: createList, newItemText: '' });
 	},
 	render: function () {
+
 		var divStyle = {
-			marginTop: '10',
 			float: 'right',
 			paddingRight: '10'
 		};
@@ -20830,9 +20858,9 @@ var SearchBox = React.createClass({
 			'div',
 			{ style: divStyle },
 			React.createElement(
-				'h2',
+				'h1',
 				null,
-				this.props.title
+				this.props.searchTitle
 			),
 			React.createElement(
 				'form',
@@ -20844,14 +20872,16 @@ var SearchBox = React.createClass({
 					'Search'
 				)
 			),
-			React.createElement('searchList', { items: this.props.items })
+			React.createElement(SearchList, { items: this.state.items }),
+			';'
 		);
 	}
 });
 module.exports = SearchBox;
 
-},{"./searchList.jsx":175,"react":170}],174:[function(require,module,exports){
+},{"./searchList.jsx":176,"react":170}],175:[function(require,module,exports){
 var React = require('react');
+
 var SearchItem = React.createClass({
 	displayName: 'SearchItem',
 
@@ -20862,47 +20892,45 @@ var SearchItem = React.createClass({
 			React.createElement(
 				'h3',
 				null,
-				this.props.search
+				this.props.text
 			)
 		);
 	}
 });
 module.exports = SearchItem;
 
-},{"react":170}],175:[function(require,module,exports){
+},{"react":170}],176:[function(require,module,exports){
 var React = require('react');
-var searchItem = require('./searchItem.jsx');
+var SearchItem = require('./searchItem.jsx');
 
-var searchList = React.createClass({
-	displayName: 'searchList',
+var SearchList = React.createClass({
+	displayName: 'SearchList',
 
 	render: function () {
-		var createList = function (search, index) {
-			return React.createElement('searchItem', { key: index + search, text: search });
+		var createItem = function (text, index) {
+			return React.createElement(SearchItem, { key: index + text, text: text });
 		};
 		return React.createElement(
 			'ul',
 			null,
-			React.createElement(
-				'h2',
-				null,
-				this.props.items.map(createList)
-			)
+			this.props.items.map(createItem)
 		);
 	}
 });
-module.exports = searchList;
+module.exports = SearchList;
 
-},{"./searchItem.jsx":174,"react":170}],176:[function(require,module,exports){
+},{"./searchItem.jsx":175,"react":170}],177:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
 var LeadItem = require('./components/heading.jsx');
 var SearchBox = require('./components/searchBox.jsx');
+var JumboItem = require('./components/Jumbo.jsx');
 
 ReactDOM.render(React.createElement(LeadItem, { title: 'Andrew\'s Website',
   content: 'Welcome to my website',
-  background: 'yellow' }), document.getElementById('top'));
+  background: '#b300b3' }), document.getElementById('top'));
 
-ReactDOM.render(React.createElement(SearchBox, { title: 'Search' }), document.getElementById('searchdiv'));
+ReactDOM.render(React.createElement(SearchBox, { searchTitle: 'Search' }), document.getElementById('searchdiv'));
+ReactDOM.render(React.createElement(JumboItem, { title: 'React.JS', imgSrc: 'images/nebula.jpeg', content: 'This is a website being built with React.js' }), document.getElementById('jumbo'));
 
-},{"./components/heading.jsx":172,"./components/searchBox.jsx":173,"react":170,"react-dom":1}]},{},[176]);
+},{"./components/Jumbo.jsx":172,"./components/heading.jsx":173,"./components/searchBox.jsx":174,"react":170,"react-dom":1}]},{},[177]);

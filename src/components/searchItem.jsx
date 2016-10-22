@@ -1,9 +1,10 @@
 var React = require('react');
+
 var SearchItem = React.createClass({
-	render:function(){
+	render: function(){
 		return(
 			<li>
-				<h3>{this.props.search}</h3>
+				<h3>{this.props.text}</h3>
 			</li>
 		);
 	}

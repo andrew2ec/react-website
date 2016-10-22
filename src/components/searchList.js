@@ -1,23 +1,19 @@
 'use strict';
 
 var React = require('react');
-var searchItem = require('./searchItem.jsx');
+var SearchItem = require('./searchItem.jsx');
 
 var SearchList = React.createClass({
-   displayName: 'searchList',
+   displayName: 'SearchList',
 
    render: function render() {
-      var createList = function createList(search, index) {
-         return React.createElement('searchItem', { key: index + search, text: search });
+      var createItem = function createItem(text, index) {
+         return React.createElement(SearchItem, { key: index + text, text: text });
       };
       return React.createElement(
          'ul',
          null,
-         React.createElement(
-            'h2',
-            null,
-            this.props.items.map(createList)
-         )
+         this.props.items.map(createItem)
       );
    }
 });
