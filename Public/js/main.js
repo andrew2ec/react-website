@@ -20758,6 +20758,45 @@ process.umask = function() { return 0; };
 },{}],172:[function(require,module,exports){
 var React = require('react');
 
+var CustomContent = React.createClass({
+	displayName: 'CustomContent',
+
+	render: function () {
+
+		var divStyle = {
+			borderRadius: '10'
+		};
+		if (this.props.background) {
+			divStyle.background = this.props.background;
+		}
+		var headingStyle = {
+			textAlign: 'center'
+		};
+		return React.createElement(
+			'div',
+			{ style: divStyle, className: 'list-group col-md-4' },
+			React.createElement(
+				'a',
+				{ href: '#', 'class': 'list-group-item active' },
+				React.createElement(
+					'h4',
+					{ style: headingStyle, 'class': 'list-group-item-heading' },
+					this.props.head
+				)
+			),
+			React.createElement(
+				'p',
+				{ 'class': 'list-group-item-text' },
+				this.props.content
+			)
+		);
+	}
+});
+module.exports = CustomContent;
+
+},{"react":170}],173:[function(require,module,exports){
+var React = require('react');
+
 var JumboItem = React.createClass({
 	displayName: 'JumboItem',
 
@@ -20795,7 +20834,7 @@ var JumboItem = React.createClass({
 });
 module.exports = JumboItem;
 
-},{"react":170}],173:[function(require,module,exports){
+},{"react":170}],174:[function(require,module,exports){
 var React = require('react');
 var LeadItem = React.createClass({
 	displayName: 'LeadItem',
@@ -20829,7 +20868,7 @@ var LeadItem = React.createClass({
 });
 module.exports = LeadItem;
 
-},{"react":170}],174:[function(require,module,exports){
+},{"react":170}],175:[function(require,module,exports){
 var React = require('react');
 var SearchList = require('./searchList.jsx');
 
@@ -20879,7 +20918,7 @@ var SearchBox = React.createClass({
 });
 module.exports = SearchBox;
 
-},{"./searchList.jsx":176,"react":170}],175:[function(require,module,exports){
+},{"./searchList.jsx":177,"react":170}],176:[function(require,module,exports){
 var React = require('react');
 
 var SearchItem = React.createClass({
@@ -20899,7 +20938,7 @@ var SearchItem = React.createClass({
 });
 module.exports = SearchItem;
 
-},{"react":170}],176:[function(require,module,exports){
+},{"react":170}],177:[function(require,module,exports){
 var React = require('react');
 var SearchItem = require('./searchItem.jsx');
 
@@ -20919,18 +20958,26 @@ var SearchList = React.createClass({
 });
 module.exports = SearchList;
 
-},{"./searchItem.jsx":175,"react":170}],177:[function(require,module,exports){
+},{"./searchItem.jsx":176,"react":170}],178:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
 var LeadItem = require('./components/heading.jsx');
 var SearchBox = require('./components/searchBox.jsx');
 var JumboItem = require('./components/Jumbo.jsx');
+var CustomContent = require('./components/CustomContent.jsx');
 
 ReactDOM.render(React.createElement(LeadItem, { title: 'Andrew\'s Website',
   content: 'Welcome to my website',
   background: '#b300b3' }), document.getElementById('top'));
 
 ReactDOM.render(React.createElement(SearchBox, { searchTitle: 'Search' }), document.getElementById('searchdiv'));
+
 ReactDOM.render(React.createElement(JumboItem, { title: 'React.JS', imgSrc: 'images/nebula.jpeg', content: 'This is a website being built with React.js' }), document.getElementById('jumbo'));
 
-},{"./components/Jumbo.jsx":172,"./components/heading.jsx":173,"./components/searchBox.jsx":174,"react":170,"react-dom":1}]},{},[177]);
+ReactDOM.render(React.createElement(CustomContent, { head: 'Earth', content: 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.\r\nPellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.', background: 'green' }), document.getElementById('earth'));
+
+ReactDOM.render(React.createElement(CustomContent, { head: 'Mars', content: 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.\r\nPellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.', background: 'white' }), document.getElementById('mars'));
+
+ReactDOM.render(React.createElement(CustomContent, { head: 'Sun', content: 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.\r\nPellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.', background: 'yellow' }), document.getElementById('sun'));
+
+},{"./components/CustomContent.jsx":172,"./components/Jumbo.jsx":173,"./components/heading.jsx":174,"./components/searchBox.jsx":175,"react":170,"react-dom":1}]},{},[178]);
